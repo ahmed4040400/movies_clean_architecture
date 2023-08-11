@@ -3,8 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/app_string.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/movie/presentation/controller/movies_bloc.dart';
+import 'package:movies_app/movie/presentation/screens/movie_detail_screen.dart';
 
 import '../../../core/network/api_constance.dart';
 
@@ -21,7 +23,6 @@ class NowPlayingComponent extends StatelessWidget {
         builder: (context, state) {
           switch (state.nowPlayingState) {
             case RequestState.loading:
-              print("loading");
               return const Center(
                 child: SizedBox(
                   height: 400,
@@ -43,7 +44,12 @@ class NowPlayingComponent extends StatelessWidget {
                       return GestureDetector(
                         key: const Key('openMovieMinimalDetail'),
                         onTap: () {
-                          /// TODO : NAVIGATE TO MOVIE DETAILS
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    MovieDetailScreen(id: item.id)),
+                          );
                         },
                         child: Stack(
                           children: [
@@ -91,7 +97,7 @@ class NowPlayingComponent extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 4.0),
                                         Text(
-                                          'Now Playing'.toUpperCase(),
+                                          AppString.nowPlaying.toUpperCase(),
                                           style: const TextStyle(
                                               fontSize: 16.0,
                                               color: Colors.white),
@@ -103,7 +109,7 @@ class NowPlayingComponent extends StatelessWidget {
                                     padding:
                                         const EdgeInsets.only(bottom: 16.0),
                                     child: Text(
-                                      item.title!,
+                                      item.title,
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontSize: 24,

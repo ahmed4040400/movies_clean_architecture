@@ -21,7 +21,6 @@ class PopularComponent extends StatelessWidget {
         builder: (context, state) {
           switch (state.popularState) {
             case RequestState.loading:
-              print("loading");
               return Center(
                 child: SizedBox(
                   height: 400,

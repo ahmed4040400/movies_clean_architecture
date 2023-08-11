@@ -12,7 +12,7 @@ class MovieDetailsModel extends MovieDetail {
     required super.voteAverage,
     required super.releaseDate,
     required super.genres,
-    required super.runTime,
+    required super.runtime,
   });
 
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) =>
@@ -26,8 +26,8 @@ class MovieDetailsModel extends MovieDetail {
           ),
         ),
         overview: json["overview"],
-        voteAverage: json["vote_average"],
+        voteAverage: json["vote_average"].toDouble(),
         releaseDate: json["release_date"],
-        runTime: json["runtime"],
+        runtime: json["runtime"],
       );
 }

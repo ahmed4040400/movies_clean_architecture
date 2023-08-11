@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/services/services_locator.dart';
+import 'package:movies_app/core/utils/app_string.dart';
 import 'package:movies_app/movie/presentation/controller/movies_bloc.dart';
 
 import '../components/now_playing_component.dart';
@@ -19,7 +20,6 @@ class MainMoviesScreen extends StatelessWidget {
         ..add(GetPopularMoviesEvent())
         ..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
           child: Column(
@@ -32,7 +32,7 @@ class MainMoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular",
+                      AppString.popular,
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -44,12 +44,12 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO POPULAR SCREEN
                       },
-                      child: Padding(
+                      child: const Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(color: Colors.white),
                             ),
                             Icon(Icons.arrow_forward_ios,
@@ -73,7 +73,7 @@ class MainMoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Top Rated",
+                      AppString.topRated,
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -85,12 +85,12 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO Top Rated Movies Screen
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(color: Colors.white),
                             ),
                             Icon(
